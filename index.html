@@ -8,19 +8,46 @@
 		<link rel="stylesheet" href="css/main.min.css" />
 	</head>
 	<body>
-		<form action="#" method="">
-			<input type="number" id="milliliter" placeholder="Enter milliliters: " />
-			<select name="" id="imperial">
-				<option value="236.588">Cup</option>
-				<option value="14.787">Tablespoon</option>
-				<option value="4.929">Teaspoon</option>
-			</select>
-			<button class="convert-button" onclick=" convertToMilliliters()">
-				Convert
-			</button>
-			<input type="number" name="" id="outputArea" disabled />
-		</form>
-		<!-- <h1 id="outputArea"></h1> -->
-		<script src="main.js"></script>
+		<section id="main-section">
+			<div class="flex-container">
+				<form action="#" method="">
+					<div class="grid-columns">
+						<h1 class="grid-columns-span-2 light-text">Simple Conversion</h1>
+						<input
+							type="number"
+							id="milliliter"
+							placeholder="Enter milliliters: "
+							value="0"
+							oninput="convertOnKeyDown()"
+						/>
+						<input
+							type="number"
+							name=""
+							value="0"
+							oninput="convertOnKeyDownOutput()"
+							id="outputArea"
+						/>
+						<select name="" id="metric" onchange="convertOnKeyDown()">
+							<option value="1">Milliliters</option>
+							<option value="100">Centilliters</option>
+							<option value="1000">Liters</option>
+						</select>
+						<select name="" id="imperial" onchange="convertOnKeyDownOutput()">
+							<option value="236.588">Cup</option>
+							<option value="14.787">Tablespoon</option>
+							<option value="4.929">Teaspoon</option>
+						</select>
+						<button
+							class="convert-button grid-columns-span-2"
+							onclick=" convertToMilliliters()"
+						>
+							Convert
+						</button>
+					</div>
+				</form>
+				<!-- <h1 id="outputArea"></h1> -->
+				<script src="main.js"></script>
+			</div>
+		</section>
 	</body>
 </html>

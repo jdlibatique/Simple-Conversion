@@ -21,6 +21,14 @@ textarea {
 	// resize: vertical;
 }
 
+h1 {
+	font-family: "Inter", sans-serif;
+}
+
+.light-text {
+	color: var(--light-text);
+}
+
 input,
 button,
 select,
@@ -29,6 +37,38 @@ textarea {
 	font-family: "Inter", sans-serif;
 	font-size: 0.75vw;
 	line-height: 1;
+}
+
+body {
+	height: 100%;
+	width: 100%;
+}
+
+#main-section {
+	height: 100%;
+	width: 100%;
+}
+
+.flex-container {
+	display: flex;
+	// flex: 1 1 0;
+	height: 100vh;
+	// width: 90vw;
+	justify-content: center;
+	align-items: center;
+}
+.grid-columns {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	justify-content: center;
+	align-items: center;
+	padding: 100px;
+	background-color: var(--red);
+	gap: 1rem;
+}
+
+.grid-columns-span-2 {
+	grid-column: span 2;
 }
 
 .convert-button {
