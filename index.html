@@ -17,31 +17,35 @@
 						</h1>
 						<input
 							type="number"
-							id="milliliter"
-							placeholder="Enter milliliters: "
+							id="left-box"
 							value="0"
-							oninput="convertOnKeyDown()"
+							oninput="convertMeasurements()"
 						/>
 						<input
 							type="number"
-							name=""
+							id="right-box"
 							value="0"
-							oninput="convertOnKeyDownOutput()"
-							id="outputArea"
+							oninput="convertMeasurementsRight()"
 						/>
-						<select name="" id="metric" onchange="convertOnKeyDown()">
-							<option value="1">Milliliters</option>
-							<option value="100">Centilliters</option>
-							<option value="1000">Liters</option>
+						<select name="" id="left-unit" onchange="convertMeasurements()">
+							<option value="1" data-measurement="metric">Milliliters</option>
+							<option value="100" data-measurement="metric">Centiliters</option>
+							<option value="1000" data-measurement="metric">Liters</option>
+							<option value="236.588" data-measurement="imperial">Cup</option>
+							<option value="14.787" data-measurement="imperial">Tablespoon</option>
+							<option value="4.929" data-measurement="imperial">Teaspoon</option>
 						</select>
-						<select name="" id="imperial" onchange="convertOnKeyDownOutput()">
-							<option value="236.588">Cup</option>
-							<option value="14.787">Tablespoon</option>
-							<option value="4.929">Teaspoon</option>
+						<select name="" id="right-unit" onchange="convertMeasurementsRight()">
+							<option value="236.588" data-measurement="imperial">Cup</option>
+							<option value="14.787" data-measurement="imperial">Tablespoon</option>
+							<option value="4.929" data-measurement="imperial">Teaspoon</option>
+							<option value="1" data-measurement="metric">Milliliters</option>
+							<option value="100" data-measurement="metric">Centiliters</option>
+							<option value="1000" data-measurement="metric">Liters</option>
 						</select>
 						<button
 							class="convert-button grid-columns-span-2"
-							onclick=" convertToMilliliters()"
+							onclick=" convertMeasurements()"
 						>
 							Convert
 						</button>

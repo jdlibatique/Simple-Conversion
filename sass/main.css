@@ -19,6 +19,15 @@ textarea {
   border-radius: 10px;
 }
 
+h1 {
+  font-family: "Inter", sans-serif;
+  text-align: center;
+}
+
+.light-text {
+  color: var(--light-text);
+}
+
 input,
 button,
 select,
@@ -30,6 +39,8 @@ textarea {
 }
 
 body {
+  padding: 0;
+  margin: 0;
   height: 100%;
   width: 100%;
 }
@@ -49,6 +60,16 @@ body {
 .grid-columns {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  padding: 100px;
+  background-color: var(--red);
+  gap: 1rem;
+  border-radius: 8px;
+}
+
+.grid-columns-span-2 {
+  grid-column: span 2;
 }
 
 .convert-button {
