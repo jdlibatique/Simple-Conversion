@@ -24,6 +24,11 @@ const convertMeasurements = () => {
 	// const leftBox = document.getElementById("left-unit");
 	// const leftBoxMeasurement = leftBox.options[leftBox.selectedIndex].dataset;
 
+	const formatter = new Intl.NumberFormat('en-US', {
+		minimumFractionDigits: 0,
+		maximumFractionDigits: 4,
+	});
+
 	const leftBoxMeasurement = document.getElementById("left-unit").options
 		[document.getElementById("left-unit").selectedIndex].dataset;
 
@@ -36,35 +41,50 @@ const convertMeasurements = () => {
 	console.log(leftBoxMeasurement.measurement);
 	console.log(rightBoxMeasurement.measurement);
 
-	if (leftBoxMeasurement.measurement === "metric" &&
+	if (parseFloat(document.getElementById("left-box").value) < 0 ||
+		parseFloat(document.getElementById("right-box").value) < 0)
+		alert("Please enter a positive value");
+	else if (leftBoxMeasurement.measurement === "metric" &&
 		rightBoxMeasurement.measurement === "imperial") {
 		console.log("Metric Left Imperial Right");
 		document.getElementById("right-box").value =
-			(parseFloat(document.getElementById("left-box").value) /
+			formatter.format((parseFloat(document.getElementById("left-box").value) /
 				parseFloat(document.getElementById("right-unit").value)) *
-			parseFloat(document.getElementById("left-unit").value);
+			parseFloat(document.getElementById("left-unit").value));
 	} else if (leftBoxMeasurement.measurement === "imperial" &&
 		rightBoxMeasurement.measurement === "metric") {
 		console.log("Imperial Left Metric Right");
 		document.getElementById("right-box").value =
-			(parseFloat(document.getElementById("left-unit").value) *
+			formatter.format((parseFloat(document.getElementById("left-unit").value) *
 				parseFloat(document.getElementById("left-box").value)) /
-			parseFloat(document.getElementById("right-unit").value);
+			parseFloat(document.getElementById("right-unit").value));
+	} else if (leftBoxMeasurement.measurement === rightBoxMeasurement.measurement &&
+		parseFloat(document.getElementById("left-unit").value) ===
+		parseFloat(document.getElementById("right-unit").value)){
+		console.log("Entered Structure")
+		alert("Please select different units");
 	} else if (leftBoxMeasurement.measurement ===
-		rightBoxMeasurement.measurement) {
+		rightBoxMeasurement.measurement && parseFloat(document.getElementById("left-unit").value) !==
+		parseFloat(document.getElementById("right-unit").value)) {
 		console.log("Same measurement system");
-		console.log("Entered Structure");
+		//console.log("Entered Structure");
 		document.getElementById("right-box").value =
-			(parseFloat(document.getElementById("left-box").value) *
+			formatter.format((parseFloat(document.getElementById("left-box").value) *
 				parseFloat(document.getElementById("left-unit").value)) /
-			parseFloat(document.getElementById("right-unit").value);
-	}
+			parseFloat(document.getElementById("right-unit").value));
+	} else
+		console.log("1");
 }
 
 const convertMeasurementsRight = () => {
 	// const leftBox = document.getElementById("left-unit");
 	// const leftBoxMeasurement = leftBox.options[leftBox.selectedIndex].dataset;
 
+	const formatter = new Intl.NumberFormat('en-US', {
+		minimumFractionDigits: 0,
+		maximumFractionDigits: 4,
+	});
+
 	const leftBoxMeasurement = document.getElementById("left-unit").options
 		[document.getElementById("left-unit").selectedIndex].dataset;
 
@@ -77,28 +97,38 @@ const convertMeasurementsRight = () => {
 	console.log(leftBoxMeasurement.measurement);
 	console.log(rightBoxMeasurement.measurement);
 
-	if (leftBoxMeasurement.measurement === "metric" &&
+
+	if (parseFloat(document.getElementById("left-box").value) < 0 ||
+		parseFloat(document.getElementById("right-box").value) < 0)
+		alert("Please enter a positive value");
+	else if (leftBoxMeasurement.measurement === "metric" &&
 		rightBoxMeasurement.measurement === "imperial") {
 		console.log("Metric Left Imperial Right");
 		document.getElementById("left-box").value =
-			(parseFloat(document.getElementById("right-box").value) *
+			formatter.format((parseFloat(document.getElementById("right-box").value) *
 				parseFloat(document.getElementById("right-unit").value)) /
-			parseFloat(document.getElementById("left-unit").value);
-	}
-	else if (leftBoxMeasurement.measurement === "imperial" &&
+			parseFloat(document.getElementById("left-unit").value));
+	} else if (leftBoxMeasurement.measurement === "imperial" &&
 		rightBoxMeasurement.measurement === "metric") {
 		console.log("Imperial Left Metric Right");
 		document.getElementById("left-box").value =
-			(parseFloat(document.getElementById("left-unit").value) /
+			formatter.format((parseFloat(document.getElementById("left-unit").value) /
 				parseFloat(document.getElementById("right-box").value)) *
-			parseFloat(document.getElementById("right-unit").value);
-	}
-	else if (leftBoxMeasurement.measurement ===
-		rightBoxMeasurement.measurement) {
+			parseFloat(document.getElementById("right-unit").value));
+	} else if (leftBoxMeasurement.measurement === rightBoxMeasurement.measurement &&
+		parseFloat(document.getElementById("left-unit").value) ===
+		parseFloat(document.getElementById("right-unit").value)){
+		console.log("Entered Structure")
+		alert("Please select different units");
+	} else if (leftBoxMeasurement.measurement ===
+		rightBoxMeasurement.measurement &&
+		parseFloat(document.getElementById("left-unit").value) !==
+		parseFloat(document.getElementById("right-unit").value)) {
 		console.log("Same measurement system");
 		document.getElementById("left-box").value =
-			(parseFloat(document.getElementById("right-box").value) /
+			formatter.format((parseFloat(document.getElementById("right-box").value) /
 				parseFloat(document.getElementById("left-unit").value)) *
-			parseFloat(document.getElementById("right-unit").value);
-	}
+			parseFloat(document.getElementById("right-unit").value));
+	} else
+		console.log("1");
 }

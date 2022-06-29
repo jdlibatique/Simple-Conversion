@@ -7,7 +7,7 @@
 		<title>Document</title>
 		<link rel="stylesheet" href="css/main.min.css" />
 	</head>
-	<body>
+	<body onload="setBackground()">
 		<section id="main-section">
 			<div class="flex-container">
 				<form action="#" method="">
@@ -35,13 +35,14 @@
 							<option value="14.787" data-measurement="imperial">Tablespoon</option>
 							<option value="4.929" data-measurement="imperial">Teaspoon</option>
 						</select>
-						<select name="" id="right-unit" onchange="convertMeasurementsRight()">
-							<option value="236.588" data-measurement="imperial">Cup</option>
-							<option value="14.787" data-measurement="imperial">Tablespoon</option>
-							<option value="4.929" data-measurement="imperial">Teaspoon</option>
+						<select name="" id="right-unit" onchange="convertMeasurements()">
 							<option value="1" data-measurement="metric">Milliliters</option>
 							<option value="100" data-measurement="metric">Centiliters</option>
 							<option value="1000" data-measurement="metric">Liters</option>
+							<option value="236.588" data-measurement="imperial" selected="selected">Cup</option>
+							<option value="14.787" data-measurement="imperial">Tablespoon</option>
+							<option value="4.929" data-measurement="imperial">Teaspoon</option>
+
 						</select>
 						<button
 							class="convert-button grid-columns-span-2"
@@ -53,6 +54,7 @@
 				</form>
 				<!-- <h1 id="outputArea"></h1> -->
 				<script src="main.js"></script>
+				<script src="background.js"></script>
 			</div>
 		</section>
 	</body>
